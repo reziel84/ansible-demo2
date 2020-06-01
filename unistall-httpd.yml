@@ -1,0 +1,23 @@
+---
+- name: remove httpd
+  hosts: all
+  tasks:
+    - name: close firewall
+      firewalld:
+        service: http
+        permanent: yes
+        state: disabled
+      become: yes
+      become_user: root
+    - name: remove file
+      file:
+        path: /var/www/html/index.html
+        state: absent
+      become: yes
+      become_user: root
+    - name: remove package
+      package:
+        name: httpd
+        state: absent
+      become: yes
+      become_user: root
