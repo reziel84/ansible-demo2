@@ -1,9 +1,11 @@
 ---
 - name: Deploying LAMP Stack on Centos 8
   hosts: ansible2
+  gather_facts: true
   remote_user: ansible
   become: yes
-
+  vars:
+        mysql_root_password: "pass4mysql!"
 
   tasks:
     - name: Installing Apache Server
@@ -12,28 +14,26 @@
     - name: Start Apache service
       yum: name=httpd state=started
 
-    - name: Installing MariaDB Server
+    - name: Install MariaDB
       yum:
-       name:
-       - mariadb-server
-       - mariadb-devel
-       - mariadb-connectot-odbc
-       - mariadb-server-utils
-       - python3-PyMySQL
-       - php
-       state: latest
-
-    - name: Start MariadDB Server Service
-      service: name=mariadb state=started
-
-    - name: Update MariaDB Server root password
+        name:
+          - mariadb-server
+          - mariadb-devel
+          - mariadb-connectot-odbc
+          - mariadb-server-utils
+          - python3-PyMySQL
+        state: latest
+        
+    - name: start mariadb
+      service:
+        name: mariadb
+        enabled: true
+        state: started
+    - name: mysql_root_password
       mysql_user:
-        name: root
-        host: ansible2
-        password: pass4mysql!
         login_user: root
-        check_implicit_admin: yes
-        priv: "*.*:ALL,GRANT"
-
-    - name: Create a new database called test
-      mysql_db: name=test state=present login_user:root login_password=pass4mysql!
+        login_password: "{{ mysql_root_password }}"
+        user: root
+        check_implicit_admin: true
+        password: "{{ mysql_root_password }}"
+        host: localhost
