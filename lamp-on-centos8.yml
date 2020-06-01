@@ -9,7 +9,20 @@
 
   tasks:
     - name: Installing Apache Server
-      yum: name=httpd state=latest
+      package:
+        name: httpd
+        state: present
+        
+    - name: Create demo index.html
+      copy:
+        content: 'welcome to this apache'
+        dest: /var/www/html/index.html
+        
+    - name: Start Apache service
+      service:
+        name: httpd
+        state: started
+        enabled: true
 
     - name: Install MariaDB
       yum:
