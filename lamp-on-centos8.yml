@@ -1,6 +1,6 @@
 ---
 - name: Deploying LAMP Stack on Centos 8
-  hosts: dbservers
+  hosts: all
   gather_facts: true
   remote_user: ansible
   become: yes
