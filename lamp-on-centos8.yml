@@ -23,10 +23,25 @@
         name: httpd
         state: started
         enabled: true
-
+    
+    - name: Install PHP Modules
+      yum: name={{ item }} state=present
+      with_items:
+          - php
+          - php-gd
+          - php-mysql
+          - php-mbstring
+          - php-process
+          - php-xmlrpc
+          - php-xml
+          - libxslt
+          - php-mcrypt
+          
+#TEST COMMENTO
     - name: Install MariaDB
       yum:
         name:
+          - mariadb
           - python3-PyMySQL
           - mariadb-server
           - mariadb-devel
