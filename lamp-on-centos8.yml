@@ -5,7 +5,7 @@
   remote_user: ansible
   become: yes
   vars:
-        mysql_root_password: "pass4mysql!"
+        mysql_root_password: "Pass4mysql!"
 
   tasks:
     - name: Installing Apache Server
