@@ -6,17 +6,25 @@
       package:
         name: httpd
         state: present
+      become: yes
+      become_user: root
     - name: create an index.html
       copy:
         content: 'welcome to this apache'
         dest: /var/www/html/index.html
+      become: yes
+      become_user: root
     - name: start the service
       service:
         name: httpd
         state: started
         enabled: true
+      become: yes
+      become_user: root
     - name: open firewall
       firewalld:
         service: http
         permanent: yes
         state: enabled
+      become: yes
+      become_user: root
