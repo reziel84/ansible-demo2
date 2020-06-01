@@ -11,9 +11,6 @@
     - name: Installing Apache Server
       yum: name=httpd state=latest
 
-    - name: Start Apache service
-      yum: name=httpd state=started
-
     - name: Install MariaDB
       yum:
         name:
