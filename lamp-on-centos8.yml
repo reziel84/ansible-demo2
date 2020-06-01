@@ -16,7 +16,6 @@
         name:
           - mariadb-server
           - mariadb-devel
-          - mariadb-connectot-odbc
           - mariadb-server-utils
           - python3-PyMySQL
         state: latest
