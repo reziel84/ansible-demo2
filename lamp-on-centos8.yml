@@ -39,8 +39,6 @@
           - php-process
           - php-xmlrpc
           - php-xml
-          - libxslt
-          - php-mcrypt
           - php-xml
           - php-pear
           - php-bcmath
