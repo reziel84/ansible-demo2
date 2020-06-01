@@ -28,14 +28,23 @@
       yum:
         name:
           - php
+          - php-cli
+          - php-fpm
+          - php-zip
+          - php-devel
           - php-gd
-          - php-mysql
+          - php-curl
+          - php-mysqlnd
           - php-mbstring
           - php-process
           - php-xmlrpc
           - php-xml
           - libxslt
           - php-mcrypt
+          - php-xml
+          - php-pear
+          - php-bcmath
+          - php-json
           
 #TEST COMMENTO
     - name: Install MariaDB
