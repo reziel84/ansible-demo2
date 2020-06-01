@@ -19,7 +19,7 @@
        - mariadb-devel
        - mariadb-connectot-odbc
        - mariadb-server-utils
-       - python3-PyMySql
+       - python3-PyMySQL
        - php
        state: latest
 
@@ -33,7 +33,7 @@
         password: pass4mysql!
         login_user: root
         check_implicit_admin: yes
-        priv: "*-*:ALL,GRANT"
+        priv: "*.*:ALL,GRANT"
 
     - name: Create a new database called test
       mysql_db: name=test state=present login_user:root login_password=pass4mysql!
